@@ -219,85 +219,89 @@
     text-align:right;
   }
 
-  /* COMMENT WALL */
-  .comment-form{
-    display:flex; flex-direction:column; gap:10px;
-    background:var(--card);
-    border:2px solid var(--ink);
-    border-radius:6px;
-    padding:20px;
-    margin-bottom:32px;
-    max-width:460px;
+  /* SHARE + CTA ROW */
+  .btn-row{
+    display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:2px;
   }
-  .comment-form input, .comment-form textarea{
-    font-family:'Work Sans', sans-serif;
-    font-size:14px;
-    padding:10px 12px;
-    border:2px solid var(--ink);
-    border-radius:4px;
-    background:#fff;
-    resize:vertical;
-  }
-  .comment-form textarea{ min-height:70px; }
-  .comment-form label{
+  .share-btn{
     font-family:'JetBrains Mono', monospace;
-    font-size:11px; font-weight:700; letter-spacing:0.06em; color:var(--concrete);
-  }
-  .comment-form button{
-    align-self:flex-start;
-    font-family:'JetBrains Mono', monospace;
-    font-weight:700; font-size:13px;
-    background:var(--ink); color:var(--paper);
-    border:2px solid var(--ink);
-    border-radius:4px;
-    padding:10px 20px;
-    cursor:pointer;
-    box-shadow:3px 3px 0 var(--red);
-    transition:transform .12s ease;
-  }
-  .comment-form button:hover{ transform:translate(-1px,-1px); }
-  .form-msg{ font-family:'JetBrains Mono', monospace; font-size:12px; min-height:14px; }
-  .form-msg.error{ color:var(--red-dark); }
-  .form-msg.ok{ color:#3b6b3b; }
-
-  .sticky-grid{
-    columns:3 220px;
-    column-gap:18px;
-  }
-  @media (max-width:640px){ .sticky-grid{ columns:1 220px; } }
-  .sticky{
-    background:var(--yellow);
-    border:2px solid var(--ink);
-    border-radius:2px;
-    padding:16px 16px 14px;
-    margin:0 0 18px;
-    break-inside:avoid;
-    box-shadow:4px 5px 0 rgba(24,23,15,0.55);
-    position:relative;
-  }
-  .sticky:nth-child(3n+1){ background:var(--yellow); transform:rotate(-1.4deg); }
-  .sticky:nth-child(3n+2){ background:var(--pink); transform:rotate(1.2deg); }
-  .sticky:nth-child(3n){ background:#CFE0C9; transform:rotate(-0.6deg); }
-  .sticky .msg{
-    font-family:'Kalam', cursive;
-    font-size:16px;
-    line-height:1.35;
-    margin:0 0 10px;
-    word-break:break-word;
-  }
-  .sticky .who{
-    font-family:'JetBrains Mono', monospace;
-    font-size:11px;
     font-weight:700;
+    font-size:14px;
+    letter-spacing:0.04em;
+    background:var(--card);
     color:var(--ink);
-    opacity:0.65;
+    border:3px solid var(--ink);
+    border-radius:4px;
+    padding:14px 22px;
+    cursor:pointer;
+    box-shadow:5px 5px 0 var(--ink);
+    transition:transform .12s ease, box-shadow .12s ease;
   }
-  .empty-wall{
-    font-family:'Kalam', cursive;
-    font-size:16px;
+  .share-btn:hover{ transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--ink); }
+  .share-btn:active{ transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink); }
+  .share-note{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
     color:var(--concrete);
-    padding:20px 0;
+    margin-top:10px;
+    min-height:14px;
   }
+
+  /* FREE BOOKS */
+  .books-card{
+    background:#1B2A22;
+    color:#EFEADB;
+    border:5px solid var(--ink);
+    border-radius:10px;
+    padding:36px 30px;
+    display:flex; flex-direction:column; gap:16px;
+    box-shadow:10px 12px 0 rgba(24,23,15,0.5);
+  }
+  .books-tag{
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; font-weight:700; letter-spacing:0.14em;
+    background:var(--yellow); color:var(--ink);
+    padding:4px 10px; border-radius:3px;
+    width:fit-content;
+  }
+  .books-card h3{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(24px,4vw,34px);
+    margin:0;
+    line-height:1.05;
+    color:#fff;
+  }
+  .books-card p{
+    font-size:14.5px;
+    line-height:1.6;
+    color:#CFCBBB;
+    margin:0;
+    max-width:520px;
+  }
+  .books-list{
+    list-style:none; margin:0; padding:0;
+    display:flex; flex-direction:column; gap:8px;
+    font-size:14px; color:#EFEADB;
+  }
+  .books-list li{ display:flex; gap:8px; align-items:baseline; }
+  .books-list li::before{ content:"✓"; color:var(--yellow); font-weight:700; }
+  .books-btn{
+    align-self:flex-start;
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700; font-size:14px;
+    background:#229ED9;
+    color:#fff;
+    text-decoration:none;
+    border:3px solid var(--ink);
+    border-radius:4px;
+    padding:13px 22px;
+    box-shadow:5px 5px 0 var(--ink);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .books-btn:hover{ transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--ink); }
+  .books-btn:active{ transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink); }
 
   footer{
     text-align:center;
@@ -344,7 +348,11 @@
     <p class="eyebrow">STUDENT-LED &middot; NATIONWIDE &middot; UNSTOPPABLE</p>
     <h1>YOUTH WANT<br>CHANGE</h1>
     <p class="sub">We inherit the decisions being made without us. Better schools, real opportunity, a future worth showing up for &mdash; we're not asking anymore. Add your name to the wall and say it with us.</p>
-    <button class="cta" id="heroBtn">RAISE YOUR FIST ✊</button>
+    <div class="btn-row">
+      <button class="cta" id="heroBtn">RAISE YOUR FIST ✊</button>
+      <button class="share-btn" id="shareBtn">SHARE ↗</button>
+    </div>
+    <p class="share-note" id="shareNote"></p>
   </div>
   <p class="rally-note">"the future belongs to those who show up for it"</p>
 </section>
@@ -365,23 +373,26 @@
   <div class="fist-more" id="fistMore"></div>
 </section>
 
-<section id="comments">
+<section id="books">
   <div class="section-head">
-    <h2>The Comment Wall</h2>
-    <span class="tag">SPEAK UP</span>
+    <h2>Free Books</h2>
+    <span class="tag">EDUCATION IS EVERYONE'S RIGHT</span>
   </div>
-  <p class="section-desc">Say why you're here. Pin it to the wall for everyone to see.</p>
+  <p class="section-desc">A movement for change starts with access &mdash; to knowledge, not just to power.</p>
 
-  <form class="comment-form" id="commentForm">
-    <label for="cName">YOUR NAME (OR HANDLE)</label>
-    <input id="cName" type="text" maxlength="40" placeholder="e.g. Anuj" required>
-    <label for="cMsg">YOUR MESSAGE</label>
-    <textarea id="cMsg" maxlength="220" placeholder="Why do you want change?" required></textarea>
-    <button type="submit">PIN TO THE WALL</button>
-    <div class="form-msg" id="formMsg"></div>
-  </form>
-
-  <div class="sticky-grid" id="stickyGrid"></div>
+  <div class="books-card">
+    <span class="books-tag">FREE &middot; NO SIGNUP &middot; ON TELEGRAM</span>
+    <h3>Can't afford textbooks? Neither could we.</h3>
+    <p>GoogleBookxSearchBot searches and delivers free books straight to your Telegram chat &mdash; textbooks, novels, reference material. Because no student should be locked out of learning by a price tag.</p>
+    <ul class="books-list">
+      <li>Search any book by title or author</li>
+      <li>Get it delivered directly in Telegram</li>
+      <li>Completely free, no account needed</li>
+    </ul>
+    <a class="books-btn" href="https://t.me/GoogleBookxSearchBot" target="_blank" rel="noopener">
+      📚 OPEN @GoogleBookxSearchBot
+    </a>
+  </div>
 </section>
 
 <footer>
@@ -390,7 +401,6 @@
 
 <script>
 const COUNT_KEY = 'support-count';
-const COMMENTS_KEY = 'comments';
 const SESSION_FLAG = 'hasSupportedThisSession';
 let supported = false;
 
@@ -462,84 +472,31 @@ async function addSupport(){
   }
 }
 
-async function getComments(){
-  try{
-    const res = await window.storage.get(COMMENTS_KEY, true);
-    return res ? JSON.parse(res.value) : [];
-  }catch(e){ return []; }
-}
-
-async function renderComments(){
-  const grid = document.getElementById('stickyGrid');
-  const list = await getComments();
-  if(list.length === 0){
-    grid.innerHTML = '<div class="empty-wall">The wall is empty. Say something first.</div>';
-    return;
-  }
-  grid.innerHTML = list.slice().reverse().map(c => `
-    <div class="sticky">
-      <p class="msg">${escapeHTML(c.text)}</p>
-      <p class="who">— ${escapeHTML(c.name)}</p>
-    </div>
-  `).join('');
-}
-
-async function postComment(name, text){
-  const msgEl = document.getElementById('formMsg');
-  if(!window.storage){
-    msgEl.textContent = 'Storage not available in this preview.';
-    msgEl.className = 'form-msg error';
-    return false;
-  }
-  try{
-    const list = await getComments();
-    list.push({ name, text, ts: Date.now() });
-    const result = await window.storage.set(COMMENTS_KEY, JSON.stringify(list), true);
-    if(result){
-      msgEl.textContent = 'Pinned to the wall.';
-      msgEl.className = 'form-msg ok';
-      await renderComments();
-      return true;
-    } else {
-      msgEl.textContent = 'Save returned no result, try again.';
-      msgEl.className = 'form-msg error';
-      console.error('storage.set returned falsy result for comments', result);
-      return false;
-    }
-  }catch(e){
-    msgEl.textContent = 'Error: ' + (e && e.message ? e.message : String(e));
-    msgEl.className = 'form-msg error';
-    console.error('postComment failed', e);
-    return false;
-  }
-}
-
 document.getElementById('heroBtn').addEventListener('click', addSupport);
 
-document.getElementById('commentForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const nameEl = document.getElementById('cName');
-  const msgTextEl = document.getElementById('cMsg');
-  const name = nameEl.value.trim();
-  const text = msgTextEl.value.trim();
-  const formMsg = document.getElementById('formMsg');
-  if(!name || !text){
-    formMsg.textContent = 'Fill in both fields.';
-    formMsg.className = 'form-msg error';
-    return;
+async function shareSite(){
+  const note = document.getElementById('shareNote');
+  const shareData = {
+    title: 'Youth Want Change',
+    text: "Join the movement. Add your voice to the wall.",
+    url: window.location.href
+  };
+  try{
+    if(navigator.share){
+      await navigator.share(shareData);
+    } else if(navigator.clipboard){
+      await navigator.clipboard.writeText(shareData.url);
+      note.textContent = 'Link copied to clipboard.';
+    } else {
+      note.textContent = 'Copy this page\'s link from your browser to share.';
+    }
+  }catch(e){
+    // user cancelled share sheet, or clipboard unavailable — no error needed
   }
-  const btn = e.target.querySelector('button');
-  btn.disabled = true;
-  const ok = await postComment(name, text);
-  btn.disabled = false;
-  if(ok){
-    nameEl.value = '';
-    msgTextEl.value = '';
-  }
-});
+}
+document.getElementById('shareBtn').addEventListener('click', shareSite);
 
 renderCount();
-renderComments();
 </script>
 
 </body>
