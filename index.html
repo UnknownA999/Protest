@@ -436,6 +436,12 @@ async function addSupport(){
   const btn = document.getElementById('heroBtn');
   btn.disabled = true;
   btn.textContent = 'ADDING YOU...';
+  if(!window.storage){
+    btn.disabled = false;
+    btn.textContent = 'RAISE YOUR FIST ✊';
+    console.error('window.storage is not available in this preview');
+    return;
+  }
   try{
     const current = await getCount();
     const next = current + 1;
@@ -447,10 +453,12 @@ async function addSupport(){
     } else {
       btn.disabled = false;
       btn.textContent = 'RAISE YOUR FIST ✊';
+      console.error('storage.set returned falsy result for count', result);
     }
   }catch(e){
     btn.disabled = false;
     btn.textContent = 'RAISE YOUR FIST ✊';
+    console.error('addSupport failed', e);
   }
 }
 
@@ -478,6 +486,11 @@ async function renderComments(){
 
 async function postComment(name, text){
   const msgEl = document.getElementById('formMsg');
+  if(!window.storage){
+    msgEl.textContent = 'Storage not available in this preview.';
+    msgEl.className = 'form-msg error';
+    return false;
+  }
   try{
     const list = await getComments();
     list.push({ name, text, ts: Date.now() });
@@ -488,13 +501,15 @@ async function postComment(name, text){
       await renderComments();
       return true;
     } else {
-      msgEl.textContent = 'Could not post right now, try again.';
+      msgEl.textContent = 'Save returned no result, try again.';
       msgEl.className = 'form-msg error';
+      console.error('storage.set returned falsy result for comments', result);
       return false;
     }
   }catch(e){
-    msgEl.textContent = 'Could not post right now, try again.';
+    msgEl.textContent = 'Error: ' + (e && e.message ? e.message : String(e));
     msgEl.className = 'form-msg error';
+    console.error('postComment failed', e);
     return false;
   }
 }
