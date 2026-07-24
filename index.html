@@ -444,11 +444,14 @@ async function renderCount(){
 async function addSupport(){
   if(supported) return;
   const btn = document.getElementById('heroBtn');
+  const note = document.getElementById('shareNote');
+  note.textContent = '';
   btn.disabled = true;
   btn.textContent = 'ADDING YOU...';
   if(!window.storage){
     btn.disabled = false;
     btn.textContent = 'RAISE YOUR FIST ✊';
+    note.textContent = "Not counting yet — this page needs to be Published first (see artifact menu). Once published, votes will save for real.";
     console.error('window.storage is not available in this preview');
     return;
   }
@@ -463,11 +466,13 @@ async function addSupport(){
     } else {
       btn.disabled = false;
       btn.textContent = 'RAISE YOUR FIST ✊';
+      note.textContent = 'Could not save your vote, please try again.';
       console.error('storage.set returned falsy result for count', result);
     }
   }catch(e){
     btn.disabled = false;
     btn.textContent = 'RAISE YOUR FIST ✊';
+    note.textContent = 'Error: ' + (e && e.message ? e.message : String(e));
     console.error('addSupport failed', e);
   }
 }
